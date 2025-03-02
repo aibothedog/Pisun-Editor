@@ -22,7 +22,7 @@ white <-- For text (Foreground)
 ```
 
 While creating a theme, use tkinter color pallete
-Upload themes with themes tag in "Issues"
+###### Upload themes with themes tag in "Issues"
 
 ![Tkinter color pallete](/assets/tk_colors.png)
 [Source](https://www.kievoit.ippo.kubg.edu.ua/kievoit/2016/tkinter/index.html#colors)
