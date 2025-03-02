@@ -10,6 +10,24 @@ Screenshots:
 ![Dark theme](/assets/dark.png)
 ![Black theme](/assets/black.png)
 
+
+How to create themes?
+By using new feature "Custom themes" we can create own themes
+Black theme example:
+```
+Black <-- Name
+black <-- Main color
+gray7 <-- Secondary color
+white <-- For text (Foreground)
+```
+
+While creating a theme, use tkinter color pallete
+
+![Tkinter color pallete](/assets/tk_colors.png)
+[Source](https://www.kievoit.ippo.kubg.edu.ua/kievoit/2016/tkinter/index.html#colors)
+
+
+
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
@@ -39,7 +57,7 @@ Finally, every program is threatened constantly by software patents. States shou
 The precise terms and conditions for copying, distribution and modification follow.
 
 TERMS AND CONDITIONS
-0. Definitions.
+1. Definitions.
 “This License” refers to version 3 of the GNU General Public License.
 
 “Copyright” also means copyright-like laws that apply to other kinds of works, such as semiconductor masks.

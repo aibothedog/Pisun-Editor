@@ -28,7 +28,7 @@ state_nonpriv = ""
 priv_mode = False
 acent_color = "white"
 secondary_acent = "gray84"
-version = "RELEASE 2.3.25c PUBLIC"
+version = "BETA 2.3.25e PUBLIC"
 version_nonpriv = ""
 connected =True
 
@@ -151,7 +151,7 @@ def open_prefs():
                 secondary_acent = "gray84"
                 text_accent = "black"
             elif theme_selected == "Custom theme":
-                set_custom_theme()
+                beta_warning(set_custom_theme, "Custom themes")
         else:
             print("No theme selected")
     def set_custom_theme():
@@ -182,7 +182,7 @@ def open_prefs():
     prefs.title("Pisun editor - Preferences")
     themer_text = tk.Label(prefs,text="Theme selector",bg=acent_color,fg=text_accent)
     themer_text.pack()
-    theme_selector = tk.Listbox(prefs,height=4,selectmode="single",bg=secondary_acent,fg=text_accent)
+    theme_selector = tk.Listbox(prefs,height=3,selectmode="single",bg=secondary_acent,fg=text_accent)
     themes = ["Light", "Dark", "Black","Custom theme"]
     theme_selector.pack()
     for i in themes:
