@@ -1,9 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
-from playsound3 import playsound
 import multiprocessing
 import Pisun_editor_rpc
-pisunmeme = multiprocessing.Process(target=playsound, args=("https://github.com/aibothedog/uwued_computercraft-bug-tracker/raw/refs/heads/main/pisun.mp3",), daemon=True)
 selected_theme = "Light"
 state = "Blank document"
 details = "Blank file"
@@ -71,9 +69,6 @@ def save_file():
         with open(file_path, 'w') as file:
             file.write(text_area.get(1.0, tk.END))
 def open_about():
-    def play_pisun():
-        pisunmeme.start()
-        pisunmeme.join()
     child = tk.Toplevel(root,bg=acent_color)
     appname_text = tk.Label(child, text=f"Pisun Editor {version}",bg=acent_color,fg=text_accent)
     author_text = tk.Label(child, text="By Aibo The Dog",bg=acent_color,fg=text_accent)
