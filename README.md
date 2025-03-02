@@ -11,7 +11,7 @@ Screenshots:
 ![Black theme](/assets/black.png)
 
 
-How to create themes?
+### How to create themes?
 By using new feature "Custom themes" we can create own themes
 Black theme example:
 ```
