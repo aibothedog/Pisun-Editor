@@ -91,7 +91,7 @@ def open_about():
     appname_text.pack()
     author_text.pack()
     about_text.pack()
-    gnu_text.pack
+    gnu_text.pack()
     child.title("Pisun editor - About")
     child.resizable(False, False)
     child.mainloop()
