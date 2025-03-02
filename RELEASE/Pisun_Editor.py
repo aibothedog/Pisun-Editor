@@ -87,7 +87,7 @@ def open_about():
     appname_text = tk.Label(child, text=f"Pisun Editor {version}",bg=acent_color,fg=text_accent)
     author_text = tk.Label(child, text="By Aibo The Dog",bg=acent_color,fg=text_accent)
     about_text = tk.Label(child, text="Pisun Editor - Open-source text editor\nwith theme features and \nDiscord RPC",bg=acent_color,fg=text_accent)
-    gnu_text = tk.Label(child, text="\nGNU GENERAL PUBLIC LICENSE applied on this app. \nRead README.md for the license ",bg=acent_color,fg=text_accent)
+    gnu_text = tk.Label(child, text="\nGNU GENERAL PUBLIC LICENSE applied on this app. \nRead README.md on repo for the license ",bg=acent_color,fg=text_accent)
     appname_text.pack()
     author_text.pack()
     about_text.pack()
