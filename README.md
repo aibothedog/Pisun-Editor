@@ -20,7 +20,6 @@ By using new feature "Custom themes" we can create own themes
 <Secondary color> (for menu bar, etc)
 <For text (Foreground)>
 ```
-Also you can use HTML Hex colors
 
 ##### Black theme example:
 ```
@@ -30,7 +29,7 @@ gray7
 white
 ```
 
-While creating a theme, use tkinter color pallete
+While creating a theme, use tkinter color pallete, or HTML Hex colors
 ###### Upload themes with themes tag in "Issues"
 
 ![Tkinter color pallete](/assets/tk_colors.png)
