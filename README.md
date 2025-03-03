@@ -23,7 +23,7 @@ By using new feature "Custom themes" we can create own themes
 
 While creating a theme, use tkinter color pallete, or HTML Hex colors
 
-##### Black theme example:
+##### Black (built in) theme example:
 ```
 Black
 black
