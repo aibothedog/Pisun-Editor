@@ -20,6 +20,7 @@ By using new feature "Custom themes" we can create own themes
 <Secondary color> (for menu bar, etc)
 <For text (Foreground)>
 ```
+Also you can use HTML Hex colors
 
 ##### Black theme example:
 ```
