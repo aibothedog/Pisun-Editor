@@ -13,12 +13,20 @@ Screenshots:
 
 ### How to create themes?
 By using new feature "Custom themes" we can create own themes
-Black theme example:
+##### Theme example:
 ```
-Black <-- Name
-black <-- Main color
-gray7 <-- Secondary color
-white <-- For text (Foreground)
+<Name of theme>
+<Main color>
+<Secondary color> (for menu bar, etc)
+<For text (Foreground)>
+```
+
+##### Black theme example:
+```
+Black
+black
+gray7
+white
 ```
 
 While creating a theme, use tkinter color pallete
