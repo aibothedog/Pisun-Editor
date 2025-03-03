@@ -21,6 +21,8 @@ By using new feature "Custom themes" we can create own themes
 <For text (Foreground)>
 ```
 
+While creating a theme, use tkinter color pallete, or HTML Hex colors
+
 ##### Black theme example:
 ```
 Black
@@ -28,8 +30,14 @@ black
 gray7
 white
 ```
+##### Dark Orchid theme example
+```
+Dark Orchid
+#B23AEE
+#9A32CD
+#000000
+```
 
-While creating a theme, use tkinter color pallete, or HTML Hex colors
 ###### Upload themes with themes tag in "Issues"
 
 ![Tkinter color pallete](/assets/tk_colors.png)
