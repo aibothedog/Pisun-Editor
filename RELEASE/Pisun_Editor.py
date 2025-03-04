@@ -28,7 +28,7 @@ state_nonpriv = ""
 priv_mode = False
 acent_color = "white"
 secondary_acent = "gray84"
-version = "RELEASE 4.3.25a PUBLIC"
+version = "RELEASE 4.3.25b PUBLIC"
 version_nonpriv = ""
 connected =True
 filepath_save = ""
@@ -267,11 +267,28 @@ def beta_warning(feature,feature_name):
     text2_warn = tk.Label(bta_warning,text=f"By clicking 'I acknowledge', you will admit\nthat you will be ready for\nconsequences of code instability",bg=acent_color,fg=text_accent)
     button1_refuse = tk.Button(bta_warning,text="No no no! Get me back!",command=refuse,bg=acent_color,fg=text_accent)
     button2_acknowledge = tk.Button(bta_warning,text="I acknowledge",command=ackwnowledge,bg=acent_color,fg=text_accent)
+    bta_warning.resizable(False,False)
     text1_warn.pack()
     text2_warn.pack()
     button1_refuse.pack()
     button2_acknowledge.pack()
     bta_warning.mainloop()
+def confirmation(action,action_name):
+    def ok():
+        confirm_window.destroy()
+        action()
+    def no():
+        confirm_window.destroy()
+    confirm_window = tk.Toplevel(root,bg=acent_color)
+    confirm_window.title("Pisun editor - Are you sure?")
+    confirm_window.resizable(False,False)
+    text1 = tk.Label(confirm_window,text=f"Are you sure you want to\n{action_name}?",fg=text_accent,bg=acent_color)
+    button1_yes = tk.Button(confirm_window,text="Yes",command=ok,bg=acent_color,fg=text_accent)
+    button2_no = tk.Button(confirm_window,text="No",command=no,bg=acent_color,fg=text_accent)
+    text1.pack()
+    button1_yes.pack(side="left")
+    button2_no.pack(side="right")
+    confirm_window.mainloop()
 def save_and_exit():
     global filepath_save
     save_file()
@@ -293,7 +310,7 @@ file_menu.add_command(label="Open", command=open_file)
 file_menu.add_command(label="Save", command=save_file)
 file_menu.add_command(label="Save as...", command=saveas_file)
 file_menu.add_separator()
-file_menu.add_command(label="Save and exit", command=save_and_exit)
+file_menu.add_command(label="Save and exit", command=lambda: confirmation(save_and_exit,"Save and exit"))
 file_menu.add_command(label="Exit", command=exit_editor)
 menu_bar.add_cascade(label="File", menu=file_menu)
 settings_menu = tk.Menu(menu_bar,tearoff=0)
