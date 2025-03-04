@@ -28,9 +28,10 @@ state_nonpriv = ""
 priv_mode = False
 acent_color = "white"
 secondary_acent = "gray84"
-version = "RELEASE 2.3.25c PUBLIC"
+version = "RELEASE 4.3.25a PUBLIC"
 version_nonpriv = ""
 connected =True
+filepath_save = ""
 
 text_accent = "black"
 def setRPC(detail, status, image, image_text,vers):
@@ -55,7 +56,8 @@ def setRPC(detail, status, image, image_text,vers):
 def start_rpc(state, details, image, image_text,ver):
     Pisun_editor_rpc.discord_rpc(details=details, state=state, smallpic=image, smallpic_text=image_text, version=version)
 def new_file():
-    global Pisun_editor_rpc_multprcs, state, details, smallimage, smallimage_text
+    global Pisun_editor_rpc_multprcs, state, details, smallimage, smallimage_text,filepath_save
+    filepath_save = ""
     text_area.delete(1.0, tk.END)
     root.wm_title("Pisun Editor - Blank file")
     Pisun_editor_rpc_multprcs.terminate()
@@ -64,24 +66,53 @@ def new_file():
     Pisun_editor_rpc_multprcs = multiprocessing.Process(target=start_rpc, args=(details, state, smallimage, smallimage_text,version), daemon=True)
     Pisun_editor_rpc_multprcs.start()
 def open_file():
-    global Pisun_editor_rpc_multprcs, state, details, smallimage, smallimage_text
-    file_path = filedialog.askopenfilename()
+    global Pisun_editor_rpc_multprcs, state, details, smallimage, smallimage_text,filepath_save
+    file_path = filedialog.askopenfilename(defaultextension=".txt",
+                                           filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
     if file_path:
+        filepath_save = file_path
         root.wm_title(f"Pisun Editor - {file_path}")
         Pisun_editor_rpc_multprcs.terminate()
         Pisun_editor_rpc_multprcs.join()  
-        setRPC(detail=file_path, status="Editing", image="editing", image_text=f"Editing File",vers=version)
+        setRPC(detail=file_path, status="Editing", image="editing", image_text=f"Editing {file_path}",vers=version)
         Pisun_editor_rpc_multprcs = multiprocessing.Process(target=start_rpc, args=(details, state, smallimage, smallimage_text,version), daemon=True)
         Pisun_editor_rpc_multprcs.start()
         with open(file_path, 'r') as file:
             text_area.delete(1.0, tk.END)
             text_area.insert(tk.END, file.read())
-def save_file():
+def saveas_file():
+    global filepath_save,Pisun_editor_rpc_multprcs
     file_path = filedialog.asksaveasfilename(defaultextension=".txt",
                                              filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
     if file_path:
+        filepath_save = file_path
+        root.wm_title(f"Pisun Editor - {file_path}")
+        Pisun_editor_rpc_multprcs.terminate()
+        Pisun_editor_rpc_multprcs.join()  
+        setRPC(detail=f"{file_path}", status="Editing", image="editing", image_text=f"Editing {file_path}",vers=version)
+        Pisun_editor_rpc_multprcs = multiprocessing.Process(target=start_rpc, args=(details, state, smallimage, smallimage_text,version), daemon=True)
+        Pisun_editor_rpc_multprcs.start()
         with open(file_path, 'w') as file:
             file.write(text_area.get(1.0, tk.END))
+def save_file():
+    global filepath_save,Pisun_editor_rpc_multprcs
+    if filepath_save:
+        with open(filepath_save, 'w') as file:
+            file.write(text_area.get(1.0, tk.END))
+    else:
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt",
+                                                 filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            filepath_save = file_path
+            root.wm_title(f"Pisun Editor - {file_path}")
+            Pisun_editor_rpc_multprcs.terminate()
+            Pisun_editor_rpc_multprcs.join()  
+            setRPC(detail=f"{file_path}", status="Editing", image="editing", image_text=f"Editing {file_path}",vers=version)
+            Pisun_editor_rpc_multprcs = multiprocessing.Process(target=start_rpc, args=(details, state, smallimage, smallimage_text,version), daemon=True)
+            Pisun_editor_rpc_multprcs.start()
+            with open(file_path, 'w') as file:
+                file.write(text_area.get(1.0, tk.END))
+        
 def open_about():
     child = tk.Toplevel(root,bg=acent_color)
     appname_text = tk.Label(child, text=f"Pisun Editor {version}",bg=acent_color,fg=text_accent)
@@ -115,7 +146,7 @@ def open_prefs():
                 theme_selector.config(bg="gray26",fg="gray77")
                 themer_text.config(bg="gray26",fg="gray77")
                 file_menu.config(bg="gray33",fg="gray77")
-                aboutmenu.config(bg="gray33",fg="gray77")
+                about_menu.config(bg="gray33",fg="gray77")
                 applied_theme_text.config(bg="gray26",fg="gray77",text=f"Applied theme: {selected_theme}")
                 acent_color = "gray26"
                 secondary_acent = "gray33"
@@ -130,7 +161,7 @@ def open_prefs():
                 theme_selector.config(bg="gray7",fg="white")
                 themer_text.config(bg="black",fg="white")
                 file_menu.config(bg="gray7",fg="white")
-                aboutmenu.config(bg="gray7",fg="white")
+                about_menu.config(bg="gray7",fg="white")
                 applied_theme_text.config(bg="black",fg="white",text=f"Applied theme: {selected_theme}")
                 acent_color = "black"
                 secondary_acent = "gray6"
@@ -145,7 +176,7 @@ def open_prefs():
                 theme_selector.config(bg="gray84",fg="black")
                 themer_text.config(bg="white",fg="black")
                 file_menu.config(bg="gray84",fg="black")
-                aboutmenu.config(bg="gray84",fg="black")
+                about_menu.config(bg="gray84",fg="black")
                 applied_theme_text.config(bg="white",fg="black",text=f"Applied theme: {selected_theme}")
                 acent_color = "white"
                 secondary_acent = "gray84"
@@ -170,7 +201,7 @@ def open_prefs():
             theme_selector.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
             themer_text.config(bg=f"{lines[1]}",fg=f"{lines[3]}")
             file_menu.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
-            aboutmenu.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
+            about_menu.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
             applied_theme_text.config(bg=f"{lines[1]}",fg=f"{lines[3]}",text=f"Applied theme: {selected_theme}")
             acent_color = f"{lines[1]}"
             secondary_acent = f"{lines[2]}"
@@ -241,6 +272,11 @@ def beta_warning(feature,feature_name):
     button1_refuse.pack()
     button2_acknowledge.pack()
     bta_warning.mainloop()
+def save_and_exit():
+    global filepath_save
+    save_file()
+    if filepath_save:
+        root.destroy()
 
 
 
@@ -255,13 +291,17 @@ file_menu = tk.Menu(menu_bar, tearoff=0)
 file_menu.add_command(label="New", command=new_file)
 file_menu.add_command(label="Open", command=open_file)
 file_menu.add_command(label="Save", command=save_file)
+file_menu.add_command(label="Save as...", command=saveas_file)
 file_menu.add_separator()
+file_menu.add_command(label="Save and exit", command=save_and_exit)
 file_menu.add_command(label="Exit", command=exit_editor)
 menu_bar.add_cascade(label="File", menu=file_menu)
-aboutmenu = tk.Menu(menu_bar, tearoff=0)
-aboutmenu.add_command(label="About...", command=open_about)
-aboutmenu.add_command(label="Discord RPC Preferences...", command=open_RPCpreferences)
-aboutmenu.add_command(label="Preferences...", command=open_prefs)
-menu_bar.add_cascade(label="About", menu=aboutmenu)
+settings_menu = tk.Menu(menu_bar,tearoff=0)
+settings_menu.add_command(label="Discord RPC Preferences...", command=open_RPCpreferences)
+settings_menu.add_command(label="Preferences...", command=open_prefs)
+menu_bar.add_cascade(label="Preferences",menu=settings_menu)
+about_menu = tk.Menu(menu_bar, tearoff=0)
+about_menu.add_command(label="About...", command=open_about)
+menu_bar.add_cascade(label="About", menu=about_menu)
 root.config(menu=menu_bar)
 root.mainloop()
