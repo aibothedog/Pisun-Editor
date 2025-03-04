@@ -1,4 +1,5 @@
 # Pisun Editor
+Latest: RELEASE 4.3.25a PUBLIC
 Open-source text editor with theme features and Discord RPC
 
 Report any bugs at "Issues"
@@ -12,7 +13,7 @@ Screenshots:
 
 
 ### How to create themes?
-By using new feature "Custom themes" we can create own themes
+By using new feature "Custom themes" in preferences we can create own themes
 ##### Theme example:
 ```
 <Name of theme>
