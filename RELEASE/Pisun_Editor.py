@@ -147,6 +147,7 @@ def open_prefs():
                 themer_text.config(bg="gray26",fg="gray77")
                 file_menu.config(bg="gray33",fg="gray77")
                 about_menu.config(bg="gray33",fg="gray77")
+                settings_menu.config(bg="gray33",fg="gray77")
                 applied_theme_text.config(bg="gray26",fg="gray77",text=f"Applied theme: {selected_theme}")
                 acent_color = "gray26"
                 secondary_acent = "gray33"
@@ -162,6 +163,7 @@ def open_prefs():
                 themer_text.config(bg="black",fg="white")
                 file_menu.config(bg="gray7",fg="white")
                 about_menu.config(bg="gray7",fg="white")
+                settings_menu.config(bg="gray7",fg="white")
                 applied_theme_text.config(bg="black",fg="white",text=f"Applied theme: {selected_theme}")
                 acent_color = "black"
                 secondary_acent = "gray6"
@@ -177,6 +179,7 @@ def open_prefs():
                 themer_text.config(bg="white",fg="black")
                 file_menu.config(bg="gray84",fg="black")
                 about_menu.config(bg="gray84",fg="black")
+                settings_menu.config(bg="gray84",fg="black")
                 applied_theme_text.config(bg="white",fg="black",text=f"Applied theme: {selected_theme}")
                 acent_color = "white"
                 secondary_acent = "gray84"
@@ -202,6 +205,7 @@ def open_prefs():
             themer_text.config(bg=f"{lines[1]}",fg=f"{lines[3]}")
             file_menu.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
             about_menu.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
+            settings_menu.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
             applied_theme_text.config(bg=f"{lines[1]}",fg=f"{lines[3]}",text=f"Applied theme: {selected_theme}")
             acent_color = f"{lines[1]}"
             secondary_acent = f"{lines[2]}"
