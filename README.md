@@ -50,5 +50,6 @@ Dark Orchid
 #### Updates names
 ### 6.3.25b
 #### Custom code execution
+#### input_gui() feature
 ## Next release to do
 #### Make ability to change font, font size
