@@ -1,5 +1,5 @@
 # Pisun Editor
-### Latest: RELEASE 6.3.25a PUBLIC
+### Latest: RELEASE 6.3.25b PUBLIC
 Open-source text editor with theme features and Discord RPC
 
 Report any bugs at "Issues"
