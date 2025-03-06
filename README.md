@@ -48,6 +48,7 @@ Dark Orchid
 #### Remake of themer script
 #### Subcategories for preferences
 #### Updates names
+### 6.3.25b
+#### Custom code execution
 ## Next release to do
 #### Make ability to change font, font size
-#### Custom code execution
