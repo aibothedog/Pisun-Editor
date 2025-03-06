@@ -1,5 +1,5 @@
 # Pisun Editor
-### Latest: RELEASE 4.3.25b PUBLIC
+### Latest: RELEASE 6.3.25a PUBLIC
 Open-source text editor with theme features and Discord RPC
 
 Report any bugs at "Issues"
@@ -43,3 +43,11 @@ Dark Orchid
 
 ![Tkinter color pallete](/assets/tk_colors.png)
 [Source](https://www.kievoit.ippo.kubg.edu.ua/kievoit/2016/tkinter/index.html#colors)
+###### Changelog
+### 6.3.25a
+## Remake of themer script
+## Subcategories for preferences
+## Updates names
+###### Next release to do
+## Make ability to change font, font size
+## Custom code execution

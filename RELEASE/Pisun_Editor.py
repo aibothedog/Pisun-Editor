@@ -32,7 +32,6 @@ version = "RELEASE 4.3.25b PUBLIC"
 version_nonpriv = ""
 connected =True
 filepath_save = ""
-
 text_accent = "black"
 def setRPC(detail, status, image, image_text,vers):
     global priv_mode, details, state, details_nonpriv, state_nonpriv, smallimage_text_nonprv, smallimage, smallimage_text, smallimage_nonpriv,version,version_nonpriv
@@ -112,24 +111,23 @@ def save_file():
             Pisun_editor_rpc_multprcs.start()
             with open(file_path, 'w') as file:
                 file.write(text_area.get(1.0, tk.END))
-        
 def open_about():
-    child = tk.Toplevel(root,bg=acent_color)
-    appname_text = tk.Label(child, text=f"Pisun Editor {version}",bg=acent_color,fg=text_accent)
-    author_text = tk.Label(child, text="By Aibo The Dog",bg=acent_color,fg=text_accent)
-    about_text = tk.Label(child, text="Pisun Editor - Open-source text editor\nwith theme features and \nDiscord RPC",bg=acent_color,fg=text_accent)
-    gnu_text = tk.Label(child, text="\nGNU GENERAL PUBLIC LICENSE applied on this app. \nRead LICENSE on repo for the license ",bg=acent_color,fg=text_accent)
+    about_window = tk.Toplevel(root,bg=acent_color)
+    appname_text = tk.Label(about_window, text=f"Pisun Editor {version}",bg=acent_color,fg=text_accent)
+    author_text = tk.Label(about_window, text="By Aibo The Dog",bg=acent_color,fg=text_accent)
+    about_text = tk.Label(about_window, text="Pisun Editor - Open-source text editor\nwith theme features and \nDiscord RPC",bg=acent_color,fg=text_accent)
+    gnu_text = tk.Label(about_window, text="\nGNU GENERAL PUBLIC LICENSE applied on this app. \nRead LICENSE on repo for the license ",bg=acent_color,fg=text_accent)
     appname_text.pack()
     author_text.pack()
     about_text.pack()
     gnu_text.pack()
-    child.title("Pisun editor - About")
-    child.resizable(False, False)
-    child.mainloop()
+    about_window.title("Pisun editor - About")
+    about_window.resizable(False, False)
+    about_window.mainloop()
 def exit_editor():
     root.destroy()
-def open_prefs():
-    def apply_theme():
+def open_themer():
+    def set_theme():
         global acent_color,secondary_acent,text_accent,selected_theme,Pisun_editor_rpc_multprcs
         selected_indices = theme_selector.curselection()
         if selected_indices:
@@ -138,56 +136,41 @@ def open_prefs():
             print(f"Selected theme: {theme_selected}")
             if theme_selected == "Dark":
                 selected_theme = "Dark"
-                root.config(bg="gray26")
-                menu_bar.config(bg="gray33",fg="gray77")
-                text_area.config(bg="gray26",fg="gray77")
-                prefs.config(bg="gray26")
-                apply_theme_button.config(bg="gray26",fg="gray77")
-                theme_selector.config(bg="gray26",fg="gray77")
-                themer_text.config(bg="gray26",fg="gray77")
-                file_menu.config(bg="gray33",fg="gray77")
-                about_menu.config(bg="gray33",fg="gray77")
-                settings_menu.config(bg="gray33",fg="gray77")
-                applied_theme_text.config(bg="gray26",fg="gray77",text=f"Applied theme: {selected_theme}")
                 acent_color = "gray26"
                 secondary_acent = "gray33"
                 text_accent = "gray77"
+                apply_theme(acent_color,secondary_acent,text_accent)
             elif theme_selected == "Black":
                 selected_theme = "Black"
-                root.config(bg="black")
-                menu_bar.config(bg="gray7",fg="white")
-                text_area.config(bg="black",fg="white")
-                prefs.config(bg="black")
-                apply_theme_button.config(bg="gray7",fg="white")
-                theme_selector.config(bg="gray7",fg="white")
-                themer_text.config(bg="black",fg="white")
-                file_menu.config(bg="gray7",fg="white")
-                about_menu.config(bg="gray7",fg="white")
-                settings_menu.config(bg="gray7",fg="white")
-                applied_theme_text.config(bg="black",fg="white",text=f"Applied theme: {selected_theme}")
                 acent_color = "black"
                 secondary_acent = "gray6"
                 text_accent = "white"
+                apply_theme(acent_color,secondary_acent,text_accent)
             elif theme_selected == "Light":
                 selected_theme = "Light"
-                root.config(bg="white")
-                menu_bar.config(bg="gray84",fg="black")
-                text_area.config(bg="white",fg="black")
-                prefs.config(bg="white")
-                apply_theme_button.config(bg="gray84",fg="black")
-                theme_selector.config(bg="gray84",fg="black")
-                themer_text.config(bg="white",fg="black")
-                file_menu.config(bg="gray84",fg="black")
-                about_menu.config(bg="gray84",fg="black")
-                settings_menu.config(bg="gray84",fg="black")
-                applied_theme_text.config(bg="white",fg="black",text=f"Applied theme: {selected_theme}")
                 acent_color = "white"
                 secondary_acent = "gray84"
                 text_accent = "black"
+                apply_theme(acent_color,secondary_acent,text_accent)
             elif theme_selected == "Custom theme":
                 set_custom_theme()
         else:
             print("No theme selected")
+    def apply_theme(prim,secnd,text):
+        global RPC
+        root.config(bg=prim)
+        menu_bar.config(bg=secnd,fg=text)
+        text_area.config(bg=prim,fg=text)
+        prefs.config(bg=prim)
+        apply_theme_button.config(bg=prim,fg=text)
+        theme_selector.config(bg=prim,fg=text)
+        themer_text.config(bg=prim,fg=text)
+        file_menu.config(bg=secnd,fg=text)
+        about_menu.config(bg=secnd,fg=text)
+        settings_menu.config(bg=secnd,fg=text)
+        prefs_dropmenu.config(bg=secnd,fg=text)
+        discord_rel_setts.config(bg=secnd,fg=text)
+        applied_theme_text.config(bg=prim,fg=text,text=f"Applied theme: {selected_theme}")
     def set_custom_theme():
         global acent_color,secondary_acent,text_accent,selected_theme,Pisun_editor_rpc_multprcs
         themefile = filedialog.askopenfilename()
@@ -195,23 +178,11 @@ def open_prefs():
             with open(themefile,'r') as file:
                 lines = [line.replace("\n","") for line in file.readlines()]
             print(lines)
-            selected_theme = f"{lines[0]}"
-            root.config(bg=f"{lines[1]}")
-            menu_bar.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
-            text_area.config(bg=f"{lines[1]}",fg=f"{lines[3]}")
-            prefs.config(bg=f"{lines[1]}")
-            apply_theme_button.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
-            theme_selector.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
-            themer_text.config(bg=f"{lines[1]}",fg=f"{lines[3]}")
-            file_menu.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
-            about_menu.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
-            settings_menu.config(bg=f"{lines[2]}",fg=f"{lines[3]}")
-            applied_theme_text.config(bg=f"{lines[1]}",fg=f"{lines[3]}",text=f"Applied theme: {selected_theme}")
             acent_color = f"{lines[1]}"
             secondary_acent = f"{lines[2]}"
             text_accent = f"{lines[3]}"
-        
-            
+            selected_theme = f"{lines[0]}"
+            apply_theme(acent_color,secondary_acent,text_accent)
     global acent_color,secondary_acent,text_accent
     prefs = tk.Toplevel(root,bg=acent_color)
     prefs.title("Pisun editor - Preferences")
@@ -224,11 +195,11 @@ def open_prefs():
         theme_selector.insert(tk.END,i)
     applied_theme_text = tk.Label(prefs,text=f"Applied theme: {selected_theme}",bg=acent_color,fg=text_accent)
     applied_theme_text.pack()
-    apply_theme_button = tk.Button(prefs,text="Apply theme",command=apply_theme,bg=secondary_acent,fg=text_accent)
+    apply_theme_button = tk.Button(prefs,text="Apply theme",command=set_theme,bg=secondary_acent,fg=text_accent)
     apply_theme_button.pack()
     prefs.resizable(False,False)
     prefs.mainloop()
-def open_RPCpreferences():
+def open_privacy_mode_setts_RPC():
     def priv_mode_toggle():
         global priv_mode, Pisun_editor_rpc_multprcs, smallimage, smallimage_text
         if priv_mode == False:
@@ -298,9 +269,6 @@ def save_and_exit():
     save_file()
     if filepath_save:
         root.destroy()
-
-
-
 root = tk.Tk()
 text_area = tk.Text(root, wrap='word')
 text_area.pack(expand='yes', fill='both')
@@ -318,8 +286,12 @@ file_menu.add_command(label="Save and exit", command=lambda: confirmation(save_a
 file_menu.add_command(label="Exit", command=exit_editor)
 menu_bar.add_cascade(label="File", menu=file_menu)
 settings_menu = tk.Menu(menu_bar,tearoff=0)
-settings_menu.add_command(label="Discord RPC Preferences...", command=open_RPCpreferences)
-settings_menu.add_command(label="Preferences...", command=open_prefs)
+discord_rel_setts = tk.Menu(settings_menu,tearoff=0)
+discord_rel_setts.add_command(label="Privacy mode", command=open_privacy_mode_setts_RPC)
+prefs_dropmenu = tk.Menu(settings_menu,tearoff=0)
+prefs_dropmenu.add_command(label="Themer", command=open_themer)
+settings_menu.add_cascade(label="Discord RPC related prefs",menu=discord_rel_setts)
+settings_menu.add_cascade(label="Preferences...",menu=prefs_dropmenu)
 menu_bar.add_cascade(label="Preferences",menu=settings_menu)
 about_menu = tk.Menu(menu_bar, tearoff=0)
 about_menu.add_command(label="About...", command=open_about)
