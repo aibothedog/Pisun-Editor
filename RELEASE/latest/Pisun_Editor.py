@@ -28,7 +28,7 @@ state_nonpriv = ""
 priv_mode = False
 acent_color = "white"
 secondary_acent = "gray84"
-version = "RELEASE 4.3.25b PUBLIC"
+version = "RELEASE 6.3.25b PUBLIC"
 version_nonpriv = ""
 connected =True
 filepath_save = ""
@@ -279,6 +279,22 @@ def arbitrary_code_executor():
     text_code_exec.pack()
     code_entry.pack()
     code_execute.pack()
+def input_gui(text=""):
+    def return_input():
+        user_input.set(input_entry.get())
+        input_wind.destroy()
+    input_wind = tk.Toplevel(root,bg=acent_color)
+    input_text = tk.Label(input_wind,text=text,bg=acent_color,fg=text_accent)
+    input_entry = tk.Entry(input_wind,bg=acent_color,fg=text_accent)
+    input_enter = tk.Button(input_wind,bg=acent_color,fg=text_accent, text="Enter text",command=return_input)
+    input_text.pack()
+    input_entry.pack()
+    input_enter.pack()
+    user_input = tk.StringVar()
+    input_wind.wait_window()
+    return user_input.get()
+
+
 root = tk.Tk()
 text_area = tk.Text(root, wrap='word')
 text_area.pack(expand='yes', fill='both')
