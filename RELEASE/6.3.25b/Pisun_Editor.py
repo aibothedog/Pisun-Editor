@@ -67,7 +67,7 @@ def new_file():
 def open_file():
     global Pisun_editor_rpc_multprcs, state, details, smallimage, smallimage_text,filepath_save
     file_path = filedialog.askopenfilename(defaultextension=".txt",
-                                           filetypes=[("Text files", "*.txt"), ("All files", "*.*"),("Any file","*")])
+                                           filetypes=[("Text files", "*.txt"), ("All files", "*.*"),("Any files","*")])
     if file_path:
         filepath_save = file_path
         root.wm_title(f"Pisun Editor - {file_path}")
@@ -82,7 +82,7 @@ def open_file():
 def saveas_file():
     global filepath_save,Pisun_editor_rpc_multprcs
     file_path = filedialog.asksaveasfilename(defaultextension=".txt",
-                                             filetypes=[("Text files", "*.txt"), ("All files", "*.*"),("Any file","*")])
+                                             filetypes=[("Text files", "*.txt"), ("All files", "*.*"),("Any files","*")])
     if file_path:
         filepath_save = file_path
         root.wm_title(f"Pisun Editor - {file_path}")
@@ -100,7 +100,7 @@ def save_file():
             file.write(text_area.get(1.0, tk.END))
     else:
         file_path = filedialog.asksaveasfilename(defaultextension=".txt",
-                                                 filetypes=[("Text files", "*.txt"), ("All files", "*.*"),("Any file","*")])
+                                                 filetypes=[("Text files", "*.txt"), ("All files", "*.*"),("Any files","*")])
         if file_path:
             filepath_save = file_path
             root.wm_title(f"Pisun Editor - {file_path}")
