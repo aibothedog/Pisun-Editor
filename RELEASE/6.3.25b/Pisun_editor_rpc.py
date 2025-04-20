@@ -3,7 +3,7 @@ import time
 from time import mktime
 
 print("RPC")
-client_id = '1360692973012254831'  # Your application's client ID as a string. (This isn't a real client ID)
+client_id = '1363456321655148735'  # Your application's client ID as a string. (This isn't a real client ID)
 try:
     rpc_obj = rpc.DiscordIpcClient.for_platform(client_id)  # Send the client ID to the rpc module
     print("RPC connection successful.")
